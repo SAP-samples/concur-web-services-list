@@ -1,0 +1,258 @@
+{
+	"info": {
+		"_postman_id": "932224ef-fd6d-4321-bde8-4769403d4118",
+		"name": "List and List Item v4",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17533102"
+	},
+	"item": [
+		{
+			"name": "Retrieve Lists v4",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{dataCenterURI}}/list/v4/lists/",
+					"protocol": "https",
+					"host": [
+						"{{dataCenterURI}}"
+					],
+					"path": [
+						"list",
+						"v4",
+						"lists",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve List Items v4 from List ID",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{dataCenterURI}}/list/v4/lists/{ListID}/items",
+					"protocol": "https",
+					"host": [
+						"{{dataCenterURI}}"
+					],
+					"path": [
+						"list",
+						"v4",
+						"lists",
+						"{ListID}",
+						"items"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve Child Items",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{dataCenterURI}}/list/v4/lists/{ListID}/items/{ItemID}/children",
+					"protocol": "https",
+					"host": [
+						"{{dataCenterURI}}"
+					],
+					"path": [
+						"list",
+						"v4",
+						"lists",
+						"{ListID}",
+						"items",
+						"{ItemID}",
+						"children"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add List Item v4",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"listId\": \"{listId}\",\r\n  \"shortCode\": \"{shortCode}}\",\r\n  \"value\": \"{value}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{dataCenterURI}}/list/v4/items",
+					"protocol": "https",
+					"host": [
+						"{{dataCenterURI}}"
+					],
+					"path": [
+						"list",
+						"v4",
+						"items"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add second level list item v4",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"listId\": \"{listId}\",\r\n  \"parentCode\": \"{parentCode}\",\r\n  \"shortCode\": \"{shortCode}\",\r\n  \"value\": \"{value}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{dataCenterURI}}/list/v4/items",
+					"protocol": "https",
+					"host": [
+						"{{dataCenterURI}}"
+					],
+					"path": [
+						"list",
+						"v4",
+						"items"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update List v4",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"shortCode\": \"{shortCode}\",\r\n  \"value\": \"{value}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{dataCenterURI}}/list/v4/items/{item_id}",
+					"protocol": "https",
+					"host": [
+						"{{dataCenterURI}}"
+					],
+					"path": [
+						"list",
+						"v4",
+						"items",
+						"{item_id}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete List Item v4",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://{{dataCenterURI}}/list/v4/lists/{list_id}/items/{item_id}",
+					"protocol": "https",
+					"host": [
+						"{{dataCenterURI}}"
+					],
+					"path": [
+						"list",
+						"v4",
+						"lists",
+						"{list_id}",
+						"items",
+						"{item_id}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
