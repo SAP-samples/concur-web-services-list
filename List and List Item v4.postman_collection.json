@@ -1,13 +1,13 @@
 {
 	"info": {
-		"_postman_id": "932224ef-fd6d-4321-bde8-4769403d4118",
+		"_postman_id": "a6485b77-fb4e-4764-b1ec-d206a0cfa1be",
 		"name": "List and List Item v4",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "17533102"
+		"_exporter_id": "30933268"
 	},
 	"item": [
 		{
-			"name": "Retrieve Lists v4",
+			"name": "1 - Retrieving a List of the Lists",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -32,13 +32,21 @@
 						"v4",
 						"lists",
 						""
+					],
+					"query": [
+						{
+							"key": "value",
+							"value": null,
+							"description": "Name of the list",
+							"disabled": true
+						}
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Retrieve List Items v4 from List ID",
+			"name": "2a - Retrieving list items of a list",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -53,7 +61,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://{{dataCenterURI}}/list/v4/lists/{ListID}/items",
+					"raw": "https://{{dataCenterURI}}/list/v4/lists/{listId}/items",
 					"protocol": "https",
 					"host": [
 						"{{dataCenterURI}}"
@@ -62,7 +70,7 @@
 						"list",
 						"v4",
 						"lists",
-						"{ListID}",
+						"{listId}",
 						"items"
 					]
 				}
@@ -70,7 +78,7 @@
 			"response": []
 		},
 		{
-			"name": "Retrieve Child Items",
+			"name": "2a - Retrieving list items of a list - query search",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -85,7 +93,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://{{dataCenterURI}}/list/v4/lists/{ListID}/items/{ItemID}/children",
+					"raw": "https://{{dataCenterURI}}/list/v4/lists/{listId}/children",
 					"protocol": "https",
 					"host": [
 						"{{dataCenterURI}}"
@@ -94,17 +102,87 @@
 						"list",
 						"v4",
 						"lists",
-						"{ListID}",
-						"items",
-						"{ItemID}",
+						"{listId}",
 						"children"
+					],
+					"query": [
+						{
+							"key": "shortCode",
+							"value": null,
+							"description": "List item code",
+							"disabled": true
+						},
+						{
+							"key": "value",
+							"value": null,
+							"description": "List item description",
+							"disabled": true
+						},
+						{
+							"key": "shortCodeOrValue",
+							"value": null,
+							"description": "List item code or description",
+							"disabled": true
+						}
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Add List Item v4",
+			"name": "2b - Retrieving children items of a parent list item",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{dataCenterURI}}/list/v4/items/{itemId}/children",
+					"protocol": "https",
+					"host": [
+						"{{dataCenterURI}}"
+					],
+					"path": [
+						"list",
+						"v4",
+						"items",
+						"{itemId}",
+						"children"
+					],
+					"query": [
+						{
+							"key": "shortCode",
+							"value": null,
+							"description": "List item code",
+							"disabled": true
+						},
+						{
+							"key": "value",
+							"value": null,
+							"description": "List item description",
+							"disabled": true
+						},
+						{
+							"key": "shortCodeOrValue",
+							"value": null,
+							"description": "List item code or description",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3a - Add a list item",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -120,7 +198,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"listId\": \"{listId}\",\r\n  \"shortCode\": \"{shortCode}}\",\r\n  \"value\": \"{value}}\"\r\n}",
+					"raw": "{\r\n  \"listId\": \"{listId}\",\r\n  \"shortCode\": \"{shortCode}\",\r\n  \"value\": \"{value}\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -143,7 +221,7 @@
 			"response": []
 		},
 		{
-			"name": "Add second level list item v4",
+			"name": "3b - Create a child list item in a multi-level list",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -182,7 +260,7 @@
 			"response": []
 		},
 		{
-			"name": "Update List v4",
+			"name": "4 - Update a list item",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -206,7 +284,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://{{dataCenterURI}}/list/v4/items/{item_id}",
+					"raw": "https://{{dataCenterURI}}/list/v4/items/{itemId}",
 					"protocol": "https",
 					"host": [
 						"{{dataCenterURI}}"
@@ -215,14 +293,14 @@
 						"list",
 						"v4",
 						"items",
-						"{item_id}"
+						"{itemId}"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Delete List Item v4",
+			"name": "5 - Delete a list item",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -237,7 +315,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://{{dataCenterURI}}/list/v4/lists/{list_id}/items/{item_id}",
+					"raw": "https://{{dataCenterURI}}/list/v4/items/{itemId}",
 					"protocol": "https",
 					"host": [
 						"{{dataCenterURI}}"
@@ -245,10 +323,8 @@
 					"path": [
 						"list",
 						"v4",
-						"lists",
-						"{list_id}",
 						"items",
-						"{item_id}"
+						"{itemId}"
 					]
 				}
 			},
