@@ -46,38 +46,6 @@
 			"response": []
 		},
 		{
-			"name": "2a - Retrieving list items of a list",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{accessToken}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://{{dataCenterURI}}/list/v4/lists/{listId}/items",
-					"protocol": "https",
-					"host": [
-						"{{dataCenterURI}}"
-					],
-					"path": [
-						"list",
-						"v4",
-						"lists",
-						"{listId}",
-						"items"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "2a - Retrieving list items of a list - query search",
 			"request": {
 				"auth": {
